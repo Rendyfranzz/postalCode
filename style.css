@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    overflow-x: hidden;
+}
+
+section{
+    min-height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    width: 40%;
+    height: 400px;
+    align-items: center;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    justify-content: center;
+}
+form select,input{
+    margin-top: 20px;
+    width: 90%;
+    height: 30px;
+    border-radius: 4px;
+}
+.result{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+}
+.card{
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(146, 141, 237);
+    border-radius: 4px;
+}
