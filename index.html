@@ -10,15 +10,21 @@
 <body>
     <section>
     <form id="form"> 
-        <label>Pilih Provinsi</label>
+        <h1>Pencarian Kode Pos</h1>
+        <label>Pilih Provinsi:</label>
         <select id="prov" name="provinsi" required>
             <option value="" disabled selected>Pilih Provinsi</option>
         </select>
-        <label>Pilih kabupaten</label>
+        <label>Pilih kabupaten:</label>
         <select id="kab" name="kabupaten" required>
             <option value="" disabled selected>Pilih Kabupaten</option>
         </select>
-        <input id="cari" type="number">
+        <!-- <label>Pilih Kecamatan</label>
+        <select id="kec" name="kecamatan" required>
+            <option value="" disabled selected>Pilih Kecamatan</option>
+        </select> -->
+        <label> Kode pos:</label>
+        <input id="cari" type="number" placeholder="Masukan kode pos">
     </form>
     <div class="result">
 </div>

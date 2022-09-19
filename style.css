@@ -1,36 +1,64 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+
+html {
     overflow-x: hidden;
 }
 
-section{
+section {
+    padding: 20px;
     min-height: 100vh;
     background-color: aliceblue;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-form{
+
+form {
+    padding: 20px;
     width: 40%;
     height: 400px;
-    align-items: center;
-    background-color: aqua;
+    border: solid black;
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
+    border-radius: 8px;
     justify-content: center;
+    animation: show 2.5s;
+    opacity: 1;
+    visibility: visible;
 }
-form select,input{
+
+form select,
+input {
     margin-top: 20px;
     width: 90%;
     height: 30px;
     border-radius: 4px;
 }
-.result{
+
+form label {
+    margin-bottom: -10px;
+    font-size: 20px;
+}
+form h1{
+    display: block;
+    margin: 0 auto;
+    margin-top: -20px;
+    margin-bottom: 40px;
+
+}
+h3{
+    font-size: 14px;
+    font-weight: normal;
+}
+p{
+    font-size: 14px;
+}
+
+.result {
     margin-top: 20px;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
@@ -38,15 +66,35 @@ form select,input{
     width: 100%;
     justify-content: center;
 }
-.card{
-    text-align: center;
+
+.card {
+    padding: 10px;
+    text-align: left;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
     width: 200px;
     height: 200px;
-    background-color: rgb(146, 141, 237);
-    border-radius: 4px;
+    border: solid black;
+    border-radius: 8px;
+    box-shadow: 11px 10px 20px -9px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 11px 10px 20px -9px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 11px 10px 20px -9px rgba(0, 0, 0, 0.7);
+    animation: show 2.5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes show {
+
+    0%{
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+    }
 }

@@ -18,12 +18,28 @@ function setKab() {
     provinsi.addEventListener("change", function () {
         const id = provinsi.value
         const postal = data.postal[id]
+        const option = document.createElement('option')
+        option.innerText = "Pilih Kabupaten";
+        option.setAttribute("selected",true)
+        option.setAttribute("disabled",true)
         select_kab.innerText = ''
+        select_kab.append(option)
         data_prov.push(postal)
         const city = [...new Set(postal.map((data) => {
             return data.city;
         }))]
-
+        city.sort((a,b)=>{
+            let fa = a.toLowerCase()
+            let fb = b.toLowerCase()
+    
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        })
         city.map((data) => {
             makeOptionKab(data)
         })
@@ -32,8 +48,23 @@ function setKab() {
 
 function addprov() {
     const prov = Object.entries(data.province)
-    prov.map((data) => {
-        makeOption(data[1])
+     const data_baru = prov.map((data) => {
+        return data[1]
+    })
+    data_baru.sort((a,b)=>{
+        let fa = a.province_name.toLowerCase()
+        let fb = b.province_name.toLowerCase()
+
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    })
+    data_baru.map((data)=>{
+        makeOption(data)
     })
 }
 
@@ -41,26 +72,25 @@ function makeOption(provinsi) {
     const option = document.createElement('option')
     option.innerText = provinsi.province_name;
     option.setAttribute('value', provinsi.province_code)
-    // console.log(option);
     select.append(option)
     return select
 }
 
 function makeOptionKab(kabupaten) {
     const option = document.createElement('option')
-    // console.log(kabupaten);
     option.innerText = kabupaten;
     option.setAttribute('value', kabupaten)
-    // console.log(option);
     select_kab.append(option)
     return select
 }
 
 function result() {
-
     kab.addEventListener("change", function () {
-
-        // console.log(data_prov);
+        const elemet = document.getElementsByClassName("card")
+        if(elemet.length != 0){
+            for(let i = 0,card ;card = elemet[i];i++)
+            elemet[i].remove()
+        }
         const value = kab.value;
         const result = data_prov[0].filter((data) => {
             if ( value  == data.city) return data
@@ -72,6 +102,7 @@ function result() {
         data_postal.map((data)=>{
             makeResult(data)
         })
+        data_postal = []
     })
 
 
@@ -81,14 +112,13 @@ function makeResult(data) {
     const container = document.querySelector(".result");
     const div = document.createElement("div")
     const title = document.createElement("h3")
+    const kecamanatan = document.createElement("h3")
     const p = document.createElement("p")
-    title.innerText = `Daerah : ${data.urban}`
-    // console.log(title);
+    title.innerText = `Desa : ${data.urban}`
+    kecamanatan.innerText = `Kecamatan : ${data.sub_district}`
     p.innerText = `kode pos: ${data.postal_code}`
-    // console.log(p);
     div.classList.add("card")
-    div.append(title, p)
-    // console.log(div);
+    div.append(kecamanatan,title,p)
     container.append(div)
     return container
 }
@@ -101,14 +131,11 @@ function form(){
         const cari = document.querySelector("#cari")    
         const filter = document.getElementsByClassName("card");
         const value = cari.value;
-        // console.log(value);
         for (let i = 0, list; list = title[i]; i++) {
-            // console.log(list[i]);
             let text = list.innerHTML;
             if (text.indexOf(value) > -1) {
                 filter[i].style.display = "";
             } else if (value.length == 0) {
-                // document.dispatchEvent(new Event(RENDER_EVENT));
                 console.log("hai");
             } else
                 filter[i].style.display = "none";
