@@ -1,8 +1,8 @@
 import data from "../data/data.json" assert {type: "json"}
 let data_postal = []
 const data_prov = []
-const provinsi = document.querySelector("#prov")
 
+const provinsi = document.querySelector("#prov")
 const select = document.querySelector("#prov")
 const select_kab = document.querySelector("#kab")
 const kab = document.querySelector("#kab")
@@ -112,7 +112,7 @@ function makeResult(data) {
     const container = document.querySelector(".result");
     const div = document.createElement("div")
     const title = document.createElement("h3")
-    const kecamanatan = document.createElement("h3")
+    const kecamanatan = document.createElement("h2")
     const p = document.createElement("p")
     title.innerText = `Desa : ${data.urban}`
     kecamanatan.innerText = `Kecamatan : ${data.sub_district}`
@@ -127,13 +127,16 @@ function form(){
     const cariForm = document.getElementById("form")
     cariForm.addEventListener("submit",function(e){
         e.preventDefault()
-        const title = document.getElementsByTagName("p");
+        const kode = document.getElementsByTagName("p");
+        const desa = document.getElementsByTagName("h3")
         const cari = document.querySelector("#cari")    
         const filter = document.getElementsByClassName("card");
-        const value = cari.value;
-        for (let i = 0, list; list = title[i]; i++) {
+        const value = cari.value.toLowerCase();
+        for (let i = 0, list,list2; list = kode[i],list2 = desa[i]; i++) {
             let text = list.innerHTML;
-            if (text.indexOf(value) > -1) {
+            let text2 = list2.innerHTML.toLowerCase()
+            console.log(text2.indexOf(value));
+            if (text.indexOf(value) > -1 || text2.indexOf(value) > -1) {
                 filter[i].style.display = "";
             } else if (value.length == 0) {
                 console.log("hai");
