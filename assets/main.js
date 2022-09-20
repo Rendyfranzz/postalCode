@@ -139,7 +139,7 @@ function form(){
             if (text.indexOf(value) > -1 || text2.indexOf(value) > -1) {
                 filter[i].style.display = "";
             } else if (value.length == 0) {
-                console.log("hai");
+
             } else
                 filter[i].style.display = "none";
         }
